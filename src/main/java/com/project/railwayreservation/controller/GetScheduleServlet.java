@@ -1,6 +1,6 @@
 package com.project.railwayreservation.controller;
 
-import com.project.railwayreservation.CRUD.DanujaCRUD.ScheduleCrud;
+import com.project.railwayreservation.CRUD.DanujaCRUD.DanujaSelect;
 import com.project.railwayreservation.model.TrainSchedule;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -21,11 +21,12 @@ public class GetScheduleServlet extends HttpServlet {
         int fromId = Integer.parseInt(req.getParameter("from"));
         int toId = Integer.parseInt(req.getParameter("to"));
         Date sDate = Date.valueOf(req.getParameter("date"));
+        int seats = Integer.parseInt(req.getParameter("seats"));
 
         List<TrainSchedule> listSchedules = null;
 
         try {
-            listSchedules = ScheduleCrud.selectSchedule(fromId, toId, sDate);
+            listSchedules = DanujaSelect.selectSchedule(fromId, toId, sDate, seats);
         } catch (SQLException e) {
             e.printStackTrace();
         }

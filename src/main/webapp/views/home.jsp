@@ -17,8 +17,6 @@
       crossorigin="anonymous"
     />
 
-    <!-- Style Sheet -->
-    <link rel="stylesheet" href="css/styles.css" />
 
     <!-- Google fonts -->
 
@@ -35,6 +33,109 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
     />
+
+    <!-- Style Sheet -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap");
+
+      /* INDEX PAGE  */
+
+      body {
+        background: rgb(0, 29, 110);
+        background-image: url("../img/wall.jpg");
+        font-family: "Montserrat", sans-serif;
+        height: auto;
+      }
+
+      .parent {
+        background: #fff;
+        background-image: url("../img/background.jpg");
+        border-radius: 10px;
+        width: 90%;
+        padding: 10rem 5rem 5rem;
+
+      }
+
+      .header-title {
+        font-size: 60px;
+        position: relative;
+        top: 2rem;
+      }
+
+      .header-title span {
+        font-size: 50px;
+        padding-bottom: 15px;
+      }
+
+      .header-btn {
+        border-radius: 50px;
+        padding: 8px 20px;
+        margin-right: 8px;
+        position: relative;
+        top: 2rem;
+      }
+
+      .header-img {
+        width: 40rem;
+        position: relative;
+        bottom: 5rem;
+      }
+
+      /* Home Page */
+
+      .parent-home {
+        background: #fff;
+        background-image: url("../img/background.jpg");
+        border-radius: 10px;
+        width: 90%;
+        padding: 1rem 1rem 5rem;
+      }
+
+      .navbar-brand {
+        font-weight: 500;
+      }
+      .navbar {
+        background-color: #035397;
+        border-radius: 10px;
+      }
+
+      .login-name {
+        color: #fff;
+        padding: 2rem 0rem;
+        position: relative;
+      }
+
+      .card {
+        border-radius: 10px;
+        margin: 1rem 0;
+      }
+
+      .form-header {
+        background-color: #035397;
+        /* background-image: url("../img/blue-texture.jpg"); */
+        border-radius: 10px 0 0 10px;
+        color: #fff;
+        padding: 3rem;
+      }
+
+      .form-control {
+        margin-bottom: 0.5rem;
+      }
+
+      .form-btn {
+        padding: 8px 30px;
+      }
+
+      .btn-submit {
+        margin-right: 10px;
+      }
+
+      .table {
+        background-color: #efefef;
+        border-radius: 10px;
+      }
+
+    </style>
   </head>
   <body>
     <!-- Section: Design Block -->
@@ -79,7 +180,7 @@
         <div class="card mb-3">
           <div class="row g-0">
             <div class="form-header col-md-4">
-              <h3>Book Your Seat</h3>
+              <h3>Search and Book </h3>
             </div>
             <div class="col-md-8">
               <div class="card-body">
@@ -87,24 +188,26 @@
                   <div class="form row">
                     <div class="col-lg-4">
                       <label for="from">From</label>
-                      <select id="inputState" class="form-control" name="from">
-                        <option selected>Choose Station</option>
-                        <option value="1">ColomboFort</option>
-                        <option value="2">Kandy</option>
+                      <select id="inputState" class="form-control" name="from" required>
+                        <option value="">Choose Station</option>
+                        <c:forEach var="stations" items="${stations}">
+                          <option value="${stations.tid}"> <c:out value=" ${stations.station}" /></option>
+                        </c:forEach>
 
                       </select>
                     </div>
                     <div class="col-lg-4">
                       <label for="to">To</label>
-                      <select id="inputState" class="form-control" name="to">
-                        <option selected>Choose Station</option>
-                        <option value="1">ColomboFort</option>
-                        <option value="2">Kandy</option>
+                      <select id="inputState" class="form-control" name="to" required>
+                        <option value="">Choose Station</option>
+                        <c:forEach var="stations" items="${stations}">
+                            <option value="<c:out value="${stations.tid}" />"> <c:out value=" ${stations.station}" /></option>
+                        </c:forEach>
                       </select>
                     </div>
                     <div class="col-lg-4">
                       <label for="date">Date</label>
-                      <input type="date" class="form-control" name="date" />
+                      <input type="date" class="form-control" name="date" required/>
                     </div>
                   </div>
                   <div class="row">
@@ -114,7 +217,8 @@
                         type="number"
                         class="form-control"
                         placeholder="Number of Passengers"
-                        name="nop"
+                        name="seats"
+                        required
                       />
                     </div>
                   </div>
