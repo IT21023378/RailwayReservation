@@ -4,15 +4,18 @@ import java.sql.Time;
 import java.util.Date;
 
 public class TrainSchedule {
+    private int tid;
     private String tName;
     private String fromStation;
     private String toStation;
     private Date date;
     private Time time;
+    private int seats;
     private int fromId;
     private int toId;
 
-    public TrainSchedule(String tName, String fromStation, String toStation, Date date, Time time, int fromId, int toId) {
+    public TrainSchedule(int tid, String tName, String fromStation, String toStation, Date date, Time time, int fromId, int toId) {
+        this.tid = tid;
         this.tName = tName;
         this.fromStation = fromStation;
         this.toStation = toStation;
@@ -22,6 +25,29 @@ public class TrainSchedule {
         this.toId = toId;
     }
 
+    public TrainSchedule(int tid, String tName, String fromStation, String toStation, Date date, Time time, int fromId, int toId, int seats) {
+        this.tid = tid;
+        this.tName = tName;
+        this.fromStation = fromStation;
+        this.toStation = toStation;
+        this.date = date;
+        this.time = time;
+        this.fromId = fromId;
+        this.toId = toId;
+        this.seats = seats;
+    }
+
+    public TrainSchedule(String tName, String fromStation, String toStation, Date date, Time time, int fromId, int toId, int seats) {
+        this.tName = tName;
+        this.fromStation = fromStation;
+        this.toStation = toStation;
+        this.date = date;
+        this.time = time;
+        this.fromId = fromId;
+        this.toId = toId;
+        this.seats = seats;
+    }
+
     public TrainSchedule(String tName, String fromStation, String toStation, Date date, Time time) {
         this.tName = tName;
         this.fromStation = fromStation;
@@ -29,6 +55,15 @@ public class TrainSchedule {
         this.date = date;
         this.time = time;
     }
+
+    public TrainSchedule(int tid, Date date, Time time, int fromId, int toId) {
+        this.tid = tid;
+        this.date = date;
+        this.time = time;
+        this.fromId = fromId;
+        this.toId = toId;
+    }
+
 
     public int getFromId() {
         return fromId;
@@ -84,5 +119,21 @@ public class TrainSchedule {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
+    }
+
+    public int getTid() {
+        return tid;
+    }
+
+    public void setTid(int tid) {
+        this.tid = tid;
     }
 }
